@@ -38,7 +38,8 @@ target_include_directories(${LIB_NAME}
 # Platform specifics
 if (UNIX)
     set(BREAKPAD_CLIENT_LINUX_DIR ${BREAKPAD_CLIENT_DIR}/linux)
-    set(cxxFiles
+    target_sources(${LIB_NAME}
+        PRIVATE
         ${BREAKPAD_CLIENT_DIR}/minidump_file_writer.cc
         ${BREAKPAD_SRC_DIR}/common/convert_UTF.cc
         ${BREAKPAD_SRC_DIR}/common/string_conversion.cc
@@ -60,10 +61,6 @@ if (UNIX)
         ${BREAKPAD_CLIENT_LINUX_DIR}/minidump_writer/linux_dumper.cc
         ${BREAKPAD_CLIENT_LINUX_DIR}/minidump_writer/linux_ptrace_dumper.cc
         ${BREAKPAD_CLIENT_LINUX_DIR}/minidump_writer/minidump_writer.cc
-        )
-    target_sources(${LIB_NAME}
-        PRIVATE
-        ${cxxFiles}
         )
 
     if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
