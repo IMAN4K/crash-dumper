@@ -4,7 +4,7 @@
 #include <string>
 
 namespace CrashReporter {
-void init(const std::string& path);
+void init(const std::string& dumpPath);
 } // namespace CrashReport
 
 #endif // CRASH_REPORTER_H
