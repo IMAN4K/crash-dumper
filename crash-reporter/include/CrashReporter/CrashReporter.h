@@ -4,7 +4,21 @@
 #include <string>
 
 namespace CrashReporter {
-void init(const std::string& dumpPath);
-} // namespace CrashReport
+
+struct Result final : public std::pair<bool, std::string> {
+    using std::pair<bool, std::string>::pair;
+
+    inline auto isOk() const {
+        return first;
+    }
+
+    inline auto getDetail() const {
+        return second;
+    }
+};
+
+Result init(const std::string& dumpPath);
+
+} // namespace CrashReporter
 
 #endif // CRASH_REPORTER_H
