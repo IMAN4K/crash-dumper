@@ -26,7 +26,7 @@ inline auto IsSet(const T* arg) {
 }
 
 static bool mkPath(const std::string& input) {
-    return false;
+    return true;
 }
 
 static bool MiniDumpCallBack(const MinidumpDescriptor&, void*, const AddrInfo*, bool succeeded) {

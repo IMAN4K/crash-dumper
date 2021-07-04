@@ -27,12 +27,10 @@ target_include_directories(${LIB_NAME}
     ${${LIB_NAME}_INCLUDE_DIRS}
     )
 
-# Platform specifics
 if (UNIX)
     set(BREAKPAD_CLIENT_LINUX_DIR ${BREAKPAD_CLIENT_DIR}/linux)
     target_sources(${LIB_NAME}
         PRIVATE
-        ${BREAKPAD_CLIENT_DIR}/minidump_file_writer.cc
         ${BREAKPAD_SRC_DIR}/common/convert_UTF.cc
         ${BREAKPAD_SRC_DIR}/common/string_conversion.cc
         ${BREAKPAD_SRC_DIR}/common/linux/elfutils.cc
@@ -41,8 +39,8 @@ if (UNIX)
         ${BREAKPAD_SRC_DIR}/common/linux/safe_readlink.cc
         ${BREAKPAD_SRC_DIR}/common/linux/file_id.cc
         ${BREAKPAD_SRC_DIR}/common/linux/breakpad_getcontext.S
+        ${BREAKPAD_CLIENT_DIR}/minidump_file_writer.cc
         ${BREAKPAD_CLIENT_LINUX_DIR}/crash_generation/crash_generation_client.cc
-        #        ${BREAKPAD_CLIENT_LINUX_DIR}/crash_generation/crash_generation_server.cc
         ${BREAKPAD_CLIENT_LINUX_DIR}/dump_writer_common/thread_info.cc
         ${BREAKPAD_CLIENT_LINUX_DIR}/dump_writer_common/ucontext_reader.cc
         ${BREAKPAD_CLIENT_LINUX_DIR}/handler/exception_handler.cc
