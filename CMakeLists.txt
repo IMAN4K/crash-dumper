@@ -7,6 +7,8 @@ project(CrashReporterToolKit
 
 set(3RDPARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty)
 add_subdirectory(crash-reporter)
-add_subdirectory(dump-syms)
-add_subdirectory(minidump-stackwalk)
-add_subdirectory(minidump-analyzer)
+#add_subdirectory(dump-syms)
+#add_subdirectory(minidump-stackwalk)
+#add_subdirectory(minidump-analyzer)
+#add_subdirectory(minidump-dump)
+#add_subdirectory(minidump-2core)

@@ -1,4 +1,4 @@
-set(PROJ_NAME minidump_analyzer)
+set(PROJ_NAME minidump_2core)
 add_executable(${PROJ_NAME} "")
 
 set(MOZ_CRASH_REPORTER_DIR ${3RDPARTY_DIR}/mozilla-crashreporter)
@@ -18,13 +18,14 @@ file(GLOB_RECURSE LIB_DISASM_SRCS ${LIB_DISASM_DIR}/*.c)
 
 target_sources(${PROJ_NAME}
     PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/src/stackwalker.cc
-    ${CMAKE_CURRENT_LIST_DIR}/src/http_symbol_supplier.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/http_symbol_supplier.cc
-    ${CMAKE_CURRENT_LIST_DIR}/src/common.h
+    ${BREAKPAD_SRC_DIR}/tools/linux/md2core/minidump-2-core.cc
+    ${BREAKPAD_SRC_DIR}/tools/linux/md2core/minidump_memory_range.h
+    ${BREAKPAD_SRC_DIR}/common/linux/memory_mapped_file.cc
+
     ${BREAKPAD_SRC_DIR}/common/path_helper.cc
     ${BREAKPAD_SRC_DIR}/processor/simple_symbol_supplier.cc
     ${BREAKPAD_SRC_DIR}/processor/basic_source_line_resolver.cc
+    ${BREAKPAD_SRC_DIR}/processor/simple_symbol_supplier.cc
     ${BREAKPAD_SRC_DIR}/processor/minidump_processor.cc
     ${BREAKPAD_SRC_DIR}/processor/minidump.cc
     ${BREAKPAD_SRC_DIR}/processor/source_line_resolver_base.cc
@@ -56,11 +57,6 @@ target_sources(${PROJ_NAME}
     ${BREAKPAD_SRC_DIR}/processor/exploitability_linux.cc
     ${BREAKPAD_SRC_DIR}/processor/disassembler_x86.cc
     ${LIB_DISASM_SRCS}
-    )
-
-target_link_libraries(${PROJ_NAME}
-    -ljsoncpp
-    -lcurl
     )
 
 install(TARGETS ${PROJ_NAME}

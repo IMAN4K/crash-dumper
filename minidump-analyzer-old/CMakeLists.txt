@@ -18,10 +18,7 @@ file(GLOB_RECURSE LIB_DISASM_SRCS ${LIB_DISASM_DIR}/*.c)
 
 target_sources(${PROJ_NAME}
     PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/src/stackwalker.cc
-    ${CMAKE_CURRENT_LIST_DIR}/src/http_symbol_supplier.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/http_symbol_supplier.cc
-    ${CMAKE_CURRENT_LIST_DIR}/src/common.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/minidump_analyzer.cpp
     ${BREAKPAD_SRC_DIR}/common/path_helper.cc
     ${BREAKPAD_SRC_DIR}/processor/simple_symbol_supplier.cc
     ${BREAKPAD_SRC_DIR}/processor/basic_source_line_resolver.cc
@@ -56,11 +53,6 @@ target_sources(${PROJ_NAME}
     ${BREAKPAD_SRC_DIR}/processor/exploitability_linux.cc
     ${BREAKPAD_SRC_DIR}/processor/disassembler_x86.cc
     ${LIB_DISASM_SRCS}
-    )
-
-target_link_libraries(${PROJ_NAME}
-    -ljsoncpp
-    -lcurl
     )
 
 install(TARGETS ${PROJ_NAME}

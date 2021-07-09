@@ -29,7 +29,7 @@ static bool mkPath(const std::string& input) {
     return true;
 }
 
-static bool MiniDumpCallBack(const MinidumpDescriptor&, void*, const AddrInfo*, bool succeeded) {
+static bool MiniDumpCallBack(const MinidumpDescriptor& md, void*, const AddrInfo*, bool succeeded) {
     //    time_t crashTime;
     //    struct kernel_timeval tv;
     //    ::sys_gettimeofday(&tv, nullptr);
