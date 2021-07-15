@@ -1,4 +1,4 @@
 [submodule "3rdparty/mozilla-crashreporter"]
 	path = 3rdparty/mozilla-crashreporter
-	url = https://github.com/IMAN4K/mozilla-crashreporter
+	url = https://gitlab.com/iman72411/mozilla-crashreporter
 	branch = master
