@@ -1,27 +1,22 @@
-set(PROJ_NAME minidump_2core)
-add_executable(${PROJ_NAME} "")
+set(EXE_NAME minidump_2core)
+add_executable(${EXE_NAME} "")
 
 set(MOZ_CRASH_REPORTER_DIR ${3RDPARTY_DIR}/mozilla-crashreporter)
 set(BREAKPAD_SRC_DIR ${MOZ_CRASH_REPORTER_DIR}/google-breakpad/src)
 set(LIB_DISASM_DIR ${BREAKPAD_SRC_DIR}/third_party/libdisasm)
 
-set(${PROJ_NAME}_INCLUDE_DIRS
-    ${BREAKPAD_SRC_DIR}
-    )
-
-target_include_directories(${PROJ_NAME}
+target_include_directories(${EXE_NAME}
     PRIVATE
-    ${${PROJ_NAME}_INCLUDE_DIRS}
+    ${BREAKPAD_SRC_DIR}
     )
 
 file(GLOB_RECURSE LIB_DISASM_SRCS ${LIB_DISASM_DIR}/*.c)
 
-target_sources(${PROJ_NAME}
+target_sources(${EXE_NAME}
     PRIVATE
     ${BREAKPAD_SRC_DIR}/tools/linux/md2core/minidump-2-core.cc
     ${BREAKPAD_SRC_DIR}/tools/linux/md2core/minidump_memory_range.h
     ${BREAKPAD_SRC_DIR}/common/linux/memory_mapped_file.cc
-
     ${BREAKPAD_SRC_DIR}/common/path_helper.cc
     ${BREAKPAD_SRC_DIR}/processor/simple_symbol_supplier.cc
     ${BREAKPAD_SRC_DIR}/processor/basic_source_line_resolver.cc
@@ -59,6 +54,7 @@ target_sources(${PROJ_NAME}
     ${LIB_DISASM_SRCS}
     )
 
-install(TARGETS ${PROJ_NAME}
+install(
+    TARGETS ${EXE_NAME}
     RUNTIME DESTINATION bin
     )

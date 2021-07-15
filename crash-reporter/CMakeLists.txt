@@ -30,7 +30,7 @@ if (UNIX)
     set(BREAKPAD_CLIENT_LINUX_DIR ${BREAKPAD_CLIENT_DIR}/linux)
     target_sources(${LIB_NAME}
         PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/src/CrashReporterLinux.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/src/CrashReporter.cpp
         ${BREAKPAD_SRC_DIR}/common/convert_UTF.cc
         ${BREAKPAD_SRC_DIR}/common/string_conversion.cc
         ${BREAKPAD_SRC_DIR}/common/linux/elfutils.cc
